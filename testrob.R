@@ -5,13 +5,14 @@ library(rvest)
 
 checkForServer()
 startServer()
-remDr <- remoteDriver(browserName = "phantomjs")
-remDrv$open()
+remDrv <- remoteDriver()
+remDrv$open() 
+
 
 
 remDrv$navigate("http://www.footywire.com/afl/footy/ft_match_statistics?mid=6171")
 
-test.html <- htmlParse(remDrv$getPageSource()[[1]]) #html is deprecated in new version of rvest
+test.html <- htmlParse(remDrv$getPageSource()[[1]])
 
 
 table <- remDrv$getPageSource()[[1]] %>% 
