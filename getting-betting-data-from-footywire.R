@@ -45,7 +45,7 @@ table.df = table.df[which(table.df$V1 != ""),]
 #### Filling Round to column
 table.df$Round =""
 for (i in 1:nrow(table.df)){
-  if (grepl("Round", as.character(table.df[i,1])) && grepl("Finals", as.character(table.df[i,1]))) {
+  if (grepl("Round", as.character(table.df[i,1])) || grepl("Finals", as.character(table.df[i,1]))) {
     c.round = as.character(table.df[i,1])
   }
   table.df$Round[i] = c.round
