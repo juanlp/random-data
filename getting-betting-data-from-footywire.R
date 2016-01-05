@@ -9,7 +9,7 @@ remDr <- remoteDriver()
 remDrv$open()
 
 
-remDrv$navigate("http://www.footywire.com/afl/footy/afl_betting?year=2014")
+remDrv$navigate("http://www.footywire.com/afl/footy/afl_betting?year=2015")
 
 test.html <- htmlParse(remDrv$getPageSource()[[1]]) #html is deprecated in new version of rvest
 
@@ -45,7 +45,7 @@ table.df = table.df[which(table.df$V1 != ""),]
 #### Filling Round to column
 table.df$Round =""
 for (i in 1:nrow(table.df)){
-  if (grepl("Round", as.character(table.df[i,1]))) {
+  if (grepl("Round", as.character(table.df[i,1])) && grepl("Finals", as.character(table.df[i,1]))) {
     c.round = as.character(table.df[i,1])
   }
   table.df$Round[i] = c.round
@@ -66,4 +66,4 @@ for (i in 1:nrow(table.df)){
 }
 View(table.df)
 
-write.csv(table.df, "2014.csv", row.names=F)
+write.csv(table.df, "2015.csv", row.names=F)
