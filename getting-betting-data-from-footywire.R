@@ -45,13 +45,13 @@ table.df = table.df[which(table.df$V1 != ""),]
 #### Filling Round to column
 table.df$Round =""
 for (i in 1:nrow(table.df)){
-  if (grepl("Round", as.character(table.df[i,1])) || grepl("Finals", as.character(table.df[i,1]))) {
+  if (grepl("Round", as.character(table.df[i,1])) || grepl("Final", as.character(table.df[i,1]))) {
     c.round = as.character(table.df[i,1])
   }
   table.df$Round[i] = c.round
 }
 table.df = table.df[which(grepl("Round", as.character(table.df$V1)) == FALSE),]
-
+table.df = table.df[which(grepl("Final", as.character(table.df$V1)) == FALSE),]
 #### Give table column names
 names(table.df) = c(as.character(table.df[1, 1:8]),"by","ratio",as.character(table.df[1, 9]),"Round")
 
